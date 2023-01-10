@@ -71,9 +71,8 @@ class Hole {
     }
 }
 
-const hasMotionSensor = window.DeviceMotionEvent
+const hasMotionSensor = false
 //document.getElementById("control_method").innerHTML = "using the w,a,s,d keys.";
-console.log(hasMotionSensor)
 const acceleration = {
     ax: 0,
     ay: 0
@@ -409,22 +408,23 @@ function gameLoop() {
             start()
         }
     })
+
     if (running && !hasMotionSensor) {
         //Keybord
         player.velocity.y = 0
         player.velocity.x = 0
 
         if (keys.w.pressed && !collisionBelow) {
-            player.velocity.y += -(Boundary.width / (40 / 2))
+            player.velocity.y += -(Boundary.width / (40 / 3))
         }
         if (keys.a.pressed && !collisionRight) {
-            player.velocity.x += -(Boundary.width / (40 / 2))
+            player.velocity.x += -(Boundary.width / (40 / 3))
         }
         if (keys.s.pressed && !collisionAbove) {
-            player.velocity.y += (Boundary.width / (40 / 2))
+            player.velocity.y += (Boundary.width / (40 / 3))
         }
         if (keys.d.pressed && !collisionLeft) {
-            player.velocity.x += (Boundary.width / (40 / 2))
+            player.velocity.x += (Boundary.width / (40 / 3))
         }
         
     } else if (running && hasMotionSensor) {
@@ -588,7 +588,7 @@ if (window.DeviceMotionEvent) {
     window.ondevicemotion = function (event) {
         acceleration.ax = event.accelerationIncludingGravity.x
         acceleration.ay = event.accelerationIncludingGravity.y
-
+        hasMotionSensor = true
     }
 }
 
