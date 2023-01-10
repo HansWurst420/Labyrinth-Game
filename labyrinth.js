@@ -363,11 +363,65 @@ map.forEach((row, i) => {
     })
 })
 
+//----------------------------action listners--------------------------------
+
+if (window.DeviceMotionEvent) {
+    window.ondevicemotion = function (event) {
+        acceleration.ax = event.accelerationIncludingGravity.x
+        acceleration.ay = event.accelerationIncludingGravity.y
+        if (acceleration.ax != 0 || acceleration.ay != 0 || acceleration.ay != 0) {
+            hasMotionSensor = true
+            
+        }
+    }
+}
+ window.addEventListener('load', (event) => {
+    console.log('page is fully loaded '+ hasMotionSensor)
+ })
+
+
+// listen to keybord
+window.addEventListener('keydown', ({ key }) => {
+    switch (key) {
+        case 'w':
+            keys.w.pressed = true
+            break
+        case 'a':
+            keys.a.pressed = true
+            break
+        case 's':
+            keys.s.pressed = true
+            break
+        case 'd':
+            keys.d.pressed = true
+            break
+    }
+})
+
+window.addEventListener('keyup', ({ key }) => {
+    switch (key) {
+        case 'w':
+            keys.w.pressed = false
+            break
+        case 'a':
+            keys.a.pressed = false
+            break
+        case 's':
+            keys.s.pressed = false
+            break
+        case 'd':
+            keys.d.pressed = false
+            break
+    }
+})
+
+//-----------------------------------------------------------------------------------------------------------
 
 
 
 
 
+//funktion that runs the game
 function gameLoop() {
     requestAnimationFrame(gameLoop)
     context.clearRect(0, 0, canvas.width, canvas.height)
@@ -573,8 +627,11 @@ function playerFallsInHole(player, hole) {
 }
 
 function start() {
+    if (!hasMotionSensor) {
+        document.getElementById("control_method").textContent = 'To navigate the labyrinth use the w,a,s,d keys.'
+    }
+    
     running = true
-    console.log(running)
     player.position.x = Boundary.width * 12.5
     player.position.y = Boundary.width * 1.5
     player.velocity.x = 0
@@ -582,54 +639,5 @@ function start() {
 }
 
 
-//----------------------------action listners--------------------------------
 
-if (window.DeviceMotionEvent) {
-    window.ondevicemotion = function (event) {
-        acceleration.ax = event.accelerationIncludingGravity.x
-        acceleration.ay = event.accelerationIncludingGravity.y
-        if (acceleration.ax != 0 || acceleration.ay != 0 || acceleration.ay != 0) {
-            hasMotionSensor = true
-            window.onchange = function () {
-                this.document.getElementById("control_method").textContent = "tilt your device"
-            }
-        }
-    }
-}
-
-
-// listen to keybord
-window.addEventListener('keydown', ({ key }) => {
-    switch (key) {
-        case 'w':
-            keys.w.pressed = true
-            break
-        case 'a':
-            keys.a.pressed = true
-            break
-        case 's':
-            keys.s.pressed = true
-            break
-        case 'd':
-            keys.d.pressed = true
-            break
-    }
-})
-
-window.addEventListener('keyup', ({ key }) => {
-    switch (key) {
-        case 'w':
-            keys.w.pressed = false
-            break
-        case 'a':
-            keys.a.pressed = false
-            break
-        case 's':
-            keys.s.pressed = false
-            break
-        case 'd':
-            keys.d.pressed = false
-            break
-    }
-})
 
