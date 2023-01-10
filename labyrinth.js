@@ -72,7 +72,6 @@ class Hole {
 }
 
 var hasMotionSensor = false
-//document.getElementById("control_method").innerHTML = "using the w,a,s,d keys.";
 const acceleration = {
     ax: 0,
     ay: 0
@@ -409,7 +408,6 @@ function gameLoop() {
         }
     })
 
-    console.log(!hasMotionSensor)
     if (running && !hasMotionSensor) {
         //Keybord
         player.velocity.y = 0
@@ -427,7 +425,7 @@ function gameLoop() {
         if (keys.d.pressed && !collisionLeft) {
             player.velocity.x += (Boundary.width / (40 / 3))
         }
-        
+
     } else if (running && hasMotionSensor) {
         player.velocity.x += -acceleration.ax * (Boundary.width / 500)
         player.velocity.y += acceleration.ay * (Boundary.height / 500)
@@ -585,12 +583,16 @@ function start() {
 
 
 //----------------------------action listners--------------------------------
+
 if (window.DeviceMotionEvent) {
     window.ondevicemotion = function (event) {
         acceleration.ax = event.accelerationIncludingGravity.x
         acceleration.ay = event.accelerationIncludingGravity.y
         if (acceleration.ax != 0 || acceleration.ay != 0 || acceleration.ay != 0) {
             hasMotionSensor = true
+            window.onload = function () {
+                this.document.getElementById("control_method").textContent = "tilt your device"
+            }
         }
     }
 }
