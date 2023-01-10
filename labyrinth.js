@@ -71,7 +71,7 @@ class Hole {
     }
 }
 
-const hasMotionSensor = false
+var hasMotionSensor = false
 //document.getElementById("control_method").innerHTML = "using the w,a,s,d keys.";
 const acceleration = {
     ax: 0,
@@ -409,6 +409,7 @@ function gameLoop() {
         }
     })
 
+    console.log(!hasMotionSensor)
     if (running && !hasMotionSensor) {
         //Keybord
         player.velocity.y = 0
@@ -588,7 +589,9 @@ if (window.DeviceMotionEvent) {
     window.ondevicemotion = function (event) {
         acceleration.ax = event.accelerationIncludingGravity.x
         acceleration.ay = event.accelerationIncludingGravity.y
-        hasMotionSensor = true
+        if (acceleration.ax != 0 || acceleration.ay != 0 || acceleration.ay != 0) {
+            hasMotionSensor = true
+        }
     }
 }
 
