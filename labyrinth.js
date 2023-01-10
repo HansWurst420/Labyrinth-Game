@@ -590,7 +590,7 @@ if (window.DeviceMotionEvent) {
         acceleration.ay = event.accelerationIncludingGravity.y
         if (acceleration.ax != 0 || acceleration.ay != 0 || acceleration.ay != 0) {
             hasMotionSensor = true
-            window.onload = function () {
+            window.onchange = function () {
                 this.document.getElementById("control_method").textContent = "tilt your device"
             }
         }
