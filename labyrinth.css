@@ -1,9 +1,34 @@
 canvas {
   margin: 0;
-  background-color: green;
+  background-color: #ffee00;
+  
 }
 
 body {
+  display: flex;
+  grid-template-columns: auto;
   margin: 0;
-  background-color: blueviolet;
+  background-color: #00ffea70;
 }
+
+button {
+  color: #007bff;
+  background: white;
+  border: 1px solid #007bff;
+  border-radius: 0.25rem;
+  width: auto;
+  height: auto;
+  font-size: xx-large;
+  position: relative;
+}
+
+button:hover {
+  color: white;
+  background: #007bff;
+}
+
+.description {
+  display: flex;
+  grid-template-rows: auto;
+}
+
