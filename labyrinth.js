@@ -629,6 +629,8 @@ function playerFallsInHole(player, hole) {
 function start() {
     if (!hasMotionSensor) {
         document.getElementById("control_method").textContent = 'To navigate the labyrinth use the w,a,s,d keys.'
+    } else {
+        document.getElementById('control_method').textContent = 'to navigate the labyrinth tilt your device.'
     }
     
     running = true
