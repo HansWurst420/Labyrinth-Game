@@ -459,7 +459,7 @@ function gameLoop() {
         }
     })
 
-    if (running) {
+    if (running && !hasMotionSensor) {
         //Keybord
         player.velocity.y = 0
         player.velocity.x = 0
