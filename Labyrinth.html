@@ -9,24 +9,34 @@
     <!--rel="stylesheet" type="text/css"-->
 </head>
 
+<header>
+    <h1>Labyrinth Game</h1>
+</header>
 
 
-<body>
 
-    <canvas id="myCanvas">
+<body class="container">
+
+    <canvas class="element" id="myCanvas">
         Your browser does not support the HTML canvas tag.
     </canvas>
+
+
     <script src="labyrinth.js"></script>
-    <div class="desription" id="instruction">
-        <h3>Labyrinth Game</h3>
+    <div class="element" id="instruction">
+    
         <p>
             The goal of the Game is to navigate the ball to the goal. But beholde the holes in the floor, 
             they will send you back to the start.
+            <br>
+            To navigate the labyrinth use the w,s,a,d keys or tilt your device if it has a motion sensor.
         </p>
-
-        <p id="control_method"></p>
-
-        <button id="start_button" onclick="start()">Start</button>
+            <div id="button">
+                <button id="start_button" onclick="start()">Start</button>
+            </div>
+            
+    
+        
     </div>
 
     

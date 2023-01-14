@@ -1,34 +1,99 @@
+
+/* generelle Einstellung */
+
+header {
+  display: flex;
+  justify-content: center;
+  height: 100px;
+  width: 100%;
+  box-shadow: 0px 5px 13px 2px #c2c2c2;
+}
+
 canvas {
-  margin: 0;
-  background-color: #ffee00;
+  margin: 1;
+  background-color: #035030d7;
+  height: 40rem;
+  width: 40rem;
+  margin-top: 1rem;
   
 }
 
 body {
-  display: flex;
-  grid-template-columns: auto;
   margin: 0;
-  background-color: #00ffea70;
+  background-color: #ffffff;
 }
 
-button {
-  color: #007bff;
-  background: white;
-  border: 1px solid #007bff;
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
+/*text styling start*/
+h1 {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#instruction {
+  font-family: 'Courier New', Courier, monospace;
+  max-width: 40rem;
+}
+
+/*text styling end*/
+
+
+/*buttons start*/
+#button {
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+#button button {
+  color: #035030d7;
+  background: #c2c2c2;
+  border: 2px solid #035030d7;
   border-radius: 0.25rem;
   width: auto;
   height: auto;
   font-size: xx-large;
   position: relative;
+  margin: 1;
 }
 
-button:hover {
-  color: white;
-  background: #007bff;
+#button button:hover {
+  color: #c2c2c2;
+  background: #035030d7;
 }
 
-.description {
+#instruction {
   display: flex;
-  grid-template-rows: auto;
+  flex-direction: column;
+}
+/*buttons end*/
+
+/* Einstellung für bestimmte Bildschirmgrößen */
+
+/* window bigger than 40 rem*/
+@media (min-width: 40rem) {
+  #button button {
+    width: 40rem;
+  }
+}
+
+/* window smaller than 40 rem*/
+@media (max-width: 40rem) {
+
+  #button button {
+    width: 100%;
+  }
+
+  canvas {
+    height: 100%;
+    width: 100%;
+    margin-left: 0%;
+  }
+
 }
 

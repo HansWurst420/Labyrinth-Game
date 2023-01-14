@@ -375,10 +375,7 @@ if (window.DeviceMotionEvent) {
         }
     }
 }
- window.addEventListener('load', (event) => {
-    console.log('page is fully loaded '+ hasMotionSensor)
- })
-
+ 
 
 // listen to keybord
 window.addEventListener('keydown', ({ key }) => {
@@ -462,7 +459,7 @@ function gameLoop() {
         }
     })
 
-    if (running && !hasMotionSensor) {
+    if (running) {
         //Keybord
         player.velocity.y = 0
         player.velocity.x = 0
@@ -627,12 +624,6 @@ function playerFallsInHole(player, hole) {
 }
 
 function start() {
-    if (!hasMotionSensor) {
-        document.getElementById("control_method").textContent = 'To navigate the labyrinth use the w,a,s,d keys.'
-    } else {
-        document.getElementById('control_method').textContent = 'to navigate the labyrinth tilt your device.'
-    }
-    
     running = true
     player.position.x = Boundary.width * 12.5
     player.position.y = Boundary.width * 1.5
