@@ -2,14 +2,10 @@
 const canvas = document.getElementById("myCanvas")
 const context = canvas.getContext('2d')
 
-//canvas fills browser window
 canvas.width = Math.min(innerWidth, innerHeight) - 5
 canvas.height = Math.min(innerWidth, innerHeight) - 5
 
-/**
- * tiles of the game-board.
- * Use the draw method, to draw a tile at the given position.
- */
+
 class Boundary {
     static width = canvas.width / 14
     static height = Boundary.width
@@ -105,6 +101,8 @@ const player = new Player({
 })
 
 var running = false
+var browserIsFirefox = false;
+var browserIsChrome = false;
 
 /**
  * defines the map of the game
@@ -364,14 +362,14 @@ map.forEach((row, i) => {
 })
 
 //----------------------------action listners--------------------------------
-
+// funktioniert nicht auf chrome, warum???
 if (window.DeviceMotionEvent) {
     window.ondevicemotion = function (event) {
         acceleration.ax = event.accelerationIncludingGravity.x
         acceleration.ay = event.accelerationIncludingGravity.y
+        console.log(acceleration.ax)
         if (acceleration.ax != 0 || acceleration.ay != 0 || acceleration.ay != 0) {
             hasMotionSensor = true
-            
         }
     }
 }
@@ -630,6 +628,17 @@ function start() {
     player.velocity.x = 0
     player.velocity.y = 0
 }
+
+//browserdetection currently not used
+window.onload = function() {
+    //  alert(navigator.userAgent);
+      if (navigator.userAgent.indexOf("Firefox") > 0) {
+          browserIsFirefox = true
+      }
+      if (navigator.userAgent.indexOf('Chrome') > 0) {
+          browserIsChrome = true
+      }
+  }
 
 
 
